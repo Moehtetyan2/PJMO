@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Registration Confirmation</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<style>
+body {
+	margin: 0;
+	font-family: sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.wrapper {
+    width:80%;
+    margin: auto;
+    height: 300px;
+    background-color:green;
+    position: relative;
+}
+.searchButton{
+    width:5%;
+    right:0;
+    height: 80px;
+    position: absolute;
+
+}
+
+.table-wrapper {
+	margin-top: 30px;
+	max-height: 50vh;
+	height: fit-content;
+	overflow-x: scroll;
+	overflow-y: scroll;
+	margin: 20px;
+	margin-bottom: 0px;
+}
+
+table {
+	width: 100%;
+	border: 1px solid black;
+	border-collapse: separate;
+	border-spacing: 0px;
+	min-width: max-content;
+}
+
+.table td, .table th {
+	padding: 12px 15px;
+	border: 1px solid #ddd;
+	text-align: center;
+	font-size: 16px;
+}
+
+.table th {
+	background-color: #213555;
+	color: #ffffff;
+	position: sticky;
+	top: 0px;
+}
+
+.outer-wrapper {
+	border: 1px solid black;
+	box-shadow: 0px 0px 3px black;
+	margin: 20px;
+	border-radius: 5px;
+}
+/*responsive*/
+@media ( max-width : 500px) {
+	.table thead {
+		display: none;
+	}
+	.table, .table tbody, .table tr, .table td {
+		display: block;
+		width: 100%;
+	}
+	.table tr {
+		margin-bottom: 15px;
+	}
+	.table td {
+		text-align: right;
+		padding-left: 50%;
+		text-align: right;
+		position: relative;
+	}
+	.table td::before {
+		content: attr(data-label);
+		position: absolute;
+		left: 0;
+		width: 50%;
+		padding-left: 15px;
+		font-size: 15px;
+		font-weight: bold;
+		text-align: left;
+	}
+}
+</style>
+</head>
+<body>
+	<div>
+		<p>
+			Total: <span id="rowCount">0</span>
+		</p>
+
+	</div>
+	<div class="wrapper">
+		<!-- Bank select -->
+		<select class="search-select" data-column="0">
+			<option value="all">All Bank Accounts</option>
+			<option value="普通預金口座">普通預金口座</option>
+			<option value="定期預金口座">定期預金口座</option>
+			<option value="デビットカード口座">デビットカード口座</option>
+			<option value="クレジットカード口座">クレジットカード口座</option>
+		</select>
+
+		<!-- Name select -->
+		<select class="search-select" data-column="1">
+			<option value="all">All Names</option>
+			<option value="MOE HTET YAN">MOE HTET YAN</option>
+			<option value="si si lwin Alias">si si lwin Alias</option>
+			<option value="カサルさん">カサルさん</option>
+			<option value="PO LI THEIN">PO LI THEIN</option>
+		</select>
+
+		<!-- Date of birth select -->
+		<select class="search-select" data-column="2">
+			<option value="all">All Birthdays</option>
+			<option value="1998/12/29">1998/12/29</option>
+			<option value="19981229">19981229</option>
+			<option value="199999999">199999999</option>
+		</select>
+
+		<!-- Job select -->
+		<select class="search-select" data-column="3">
+			<option value="all">All Jobs</option>
+			<option value="小売業">小売業</option>
+			<option value="IT/ソフトウェア開発">IT/ソフトウェア開発</option>
+			<option value="医療/看護">医者/看護</option>
+			<option value="オフィスワーク">オフィスワーク</option>
+		</select>
+
+
+
+		<!-- Search button -->
+		<div class="searchButton"><button id="searchButton">
+			<span>検索</span>
+		</button></div>
+
+		<div id="searchResults"></div>
+	</div>
+
+	<div class="table-wrapper">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">通帳種類</th>
+					<th scope="col">名前</th>
+					<th scope="col">生年月日</th>
+					<th scope="col">仕事</th>
+					<th scope="col">通帳種類</th>
+					<th scope="col">名前</th>
+					<th scope="col">生年月日</th>
+					<th scope="col">仕事</th>
+					<th scope="col">通帳種類</th>
+					<th scope="col">名前</th>
+					<th scope="col">生年月日</th>
+					<th scope="col">仕事</th>
+
+				</tr>
+			</thead>
+			<tbody id="tableBody">
+
+
+				<tr th:each="listCustomer : ${customer}">
+
+					<td th:text="${listCustomer.tsuchoushurui}">通帳種類</td>
+					<td th:text="${listCustomer.name}">名前</td>
+					<td th:text="${listCustomer.seinengapi}">生年月日</td>
+					<td th:text="${listCustomer.shigoto}">仕事</td>
+					<td th:text="${listCustomer.tsuchoushurui}">通帳種類</td>
+					<td th:text="${listCustomer.name}">名前</td>
+					<td th:text="${listCustomer.seinengapi}">生年月日</td>
+					<td th:text="${listCustomer.shigoto}">仕事</td>
+					<td th:text="${listCustomer.tsuchoushurui}">通帳種類</td>
+					<td th:text="${listCustomer.name}">名前</td>
+					<td th:text="${listCustomer.seinengapi}">生年月日</td>
+					<td th:text="${listCustomer.shigoto}">仕事</td>
+
+				</tr>
+
+			</tbody>
+
+		</table>
+	</div>
+
+	<!-- Include jQuery library -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+    $(document).ready(function() {
+   
+    	
+      $("#searchButton").on("click", function() {
+    	 
+        // Get the selected values from the select options
+        var tsuchoushuruiValue = $(".search-select[data-column='0']").val();
+        var nameValue = $(".search-select[data-column='1']").val();
+        var dobValue = $(".search-select[data-column='2']").val();
+        var jobValue = $(".search-select[data-column='3']").val();
+
+
+        // Filter the table rows based on the selected values
+        $("#tableBody tr").each(function() {
+          var tsuchoushurui = $(this).find("td:nth-child(1)").text();
+          var name = $(this).find("td:nth-child(2)").text();
+          var dob = $(this).find("td:nth-child(3)").text();
+          var job = $(this).find("td:nth-child(4)").text();
+        
+
+          // Check if the row data matches the selected values
+          var showRow = true;
+          if (tsuchoushuruiValue !== "all" && tsuchoushurui !== tsuchoushuruiValue) {
+            showRow = false;
+          }
+          if (nameValue !== "all" && name !== nameValue) {
+            showRow = false;
+          }
+          if (dobValue !== "all" && dob !== dobValue) {
+            showRow = false;
+          }
+          if (jobValue !== "all" && job !== jobValue) {
+            showRow = false;
+          }
+          
+          // Count the visible rows
+          var rowCount = $("#tableBody tr:visible").length;
+
+          // Update the Total count in the HTML
+          $("#rowCount").text(rowCount);
+
+          // Show/hide the row based on the search results
+          if (showRow) {
+            $(this).show();
+          } else {
+            $(this).hide();
+          }
+        });
+      });
+    });
+      
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>New Customer Register</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- Style Css -->
+<style>
+body {
+	font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "Meiryo",
+		"メイリオ", "MS Pゴシック", sans-serif;
+}
+
+form {
+	width: 300px;
+	margin: 0 auto;
+}
+
+label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+input[type="text"], input[type="email"], select {
+	width: 100%;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+button {
+	background-color: #4CAF50;
+	color: white;
+	padding: 10px 15px;
+	border: none;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #45a049;
+}
+
+</style>
+
+<script>
+    function confirmRegistration() {
+      if (window.confirm("Are you sure you want to submit the registration form?")) {
+        return true; // Allow form submission
+      } else {
+        return false; // Cancel form submission
+      }
+    }
+  </script>
+
+</head>
+<body>
+
+	<div class="p-3 mb-2 bg-secondary text-white">
+		<h1>通帳新規登録一覧</h1>
+		<form th:action="@{/tsuchouShinKiHozon}" th:object="${customerObj}"
+			method="post" onsubmit="return confirmRegistration();">
+			<fieldset>
+				<!-- tsuchoushurui -->
+				<div class="mb-3">
+					<label class="form-label"> 通帳種類</label> <select type="text"
+						th:field="*{tsuchoushurui}">
+						<option value="普通預金口座">普通預金口座</option>
+						<option value="定期預金口座">定期預金口座</option>
+						<option value="マネーマーケット口座">マネーマーケット口座</option>
+						<option value="デビットカード口座">デビットカード口座</option>
+						<option value="クレジットカード口座">クレジットカード口座</option>
+						<option value="投資口座">投資口座</option>
+						<option value="ローン口座">ローン口座</option>
+						<option value="外貨預金口座">外貨預金口座</option>
+						<option value="共有口座">共有口座</option>
+						<option value="その他">その他</option>
+					</select>
+
+				</div>
+
+				<!-- name -->
+				<div class="mb-3">
+					<label class="form-label"> 名前</label> <input type="text"
+						th:field="*{name}" />
+				</div>
+
+				<!--  seinengapi -->
+				<div class="mb-3">
+					<label class="form-label"> 生年月日</label> <input type="text"
+						th:field="*{seinengapi}" />
+				</div>
+
+				<!-- shigoto -->
+				<div class="mb-3">
+					<label class="form-label"> 仕事</label> <select class="form-select"
+						type="text" th:field="*{shigoto}">
+						<option value="オフィスワーク">オフィスワーク</option>
+						<option value="小売業">小売業</option>
+						<option value="ホスピタリティ（接客業）">ホスピタリティ（接客業）</option>
+						<option value="IT/ソフトウェア開発">IT/ソフトウェア開発</option>
+						<option value="医療/看護">医療/看護</option>
+						<option value="教育">教育</option>
+						<option value="建設業">建設業</option>
+						<option value="輸送/物流">輸送/物流</option>
+						<option value="金融/会計">金融/会計</option>
+						<option value="クリエイティブ/デザイン">クリエイティブ/デザイン</option>
+						<option value="その他">その他</option>
+
+					</select>
+
+				</div>
+
+
+				<!-- jusho -->
+				<div class="mb-3">
+					<label class="form-label"> 住所</label> <input class="form-control"
+						type="text" th:field="*{jusho}" />
+				</div>
+
+
+				<!-- keitai -->
+				<div class="mb-3">
+					<label class="form-label"> 携帯</label> <input class="form-control"
+						type="text" th:field="*{keitai}" />
+				</div>
+
+				<!-- mail -->
+				<div class="mb-3">
+					<label class="form-label"> メール</label> <input class="form-control"
+						type="email" th:field="*{mail}" />
+				</div>
+
+				<button class="btn btn-primary" type="submit">申し込み</button>
+
+			</fieldset>
+
+
+		</form>
+
+	</div>
+	
+	
+
+</body>
+</html>

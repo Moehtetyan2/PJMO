@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Confirmation</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    .wrapper {
+      width: 500px;
+      margin: auto;
+      line-height: 30px;
+      padding: 20px;
+      background-color: #025464;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="p-3 mb-2 bg-secondary text-white">
+    <div class="container">
+      <h1>Registration Confirmation</h1>
+
+      <div class="wrapper">
+        <h2>Hello <span style="color: orange;">Mr</span><span th:text="${customerObj.name}"></span></h2>
+        <p>Please check your information:</p>
+        <p>
+          <label class="form-label">通帳種類:</label>
+          <span th:text="${customerObj.tsuchoushurui}"></span>
+        </p>
+        <p>
+          <label class="form-label">名前:</label>
+          <span th:text="${customerObj.name}"></span>
+        </p>
+        <p>
+          <label class="form-label">生年月日:</label>
+          <span th:text="${customerObj.seinengapi}"></span>
+        </p>
+        <p>
+          <label class="form-label">仕事:</label>
+          <span th:text="${customerObj.shigoto}"></span>
+        </p>
+        <p>
+          <label class="form-label">住所:</label>
+          <span th:text="${customerObj.jusho}"></span>
+        </p>
+        <p>
+          <label class="form-label">携帯:</label>
+          <span th:text="${customerObj.keitai}"></span>
+        </p>
+        <p>
+          <label class="form-label">メール:</label>
+          <span th:text="${customerObj.mail}"></span>
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

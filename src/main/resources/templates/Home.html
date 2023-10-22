@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Welcome to Tokyo Bank</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<style>
+a {
+	color: #fff;
+	transition: background-color .5s;
+	text-decoration: none;
+}
+
+a:hover {
+	color: orange;
+	text-decoration: none;
+}
+</style>
+</head>
+<body>
+	<div class="p-3 mb-2 bg-secondary text-white">
+		<div class="container">
+			<h1 style="color: white;">ようこそ！東京銀行</h1>
+			<button class="btn btn-primary">
+				<a th:href="@{'/tsuchoshinkitouroku'}"> 通帳新規登録</a>
+			</button>
+			<br>
+			<br>
+			<button class="btn btn-primary">
+				<a th:href="@{'/tsuchoshinkiTable'}"> 顧客データ一覧</a>
+			</button>
+			<!--
+      <form action="/tsuchoshinkitouroku" method="POST">
+        <button class="btn btn-primary" type="submit">通帳新規登録</button>
+      </form>
+      -->
+		</div>
+	</div>
+</body>
+</html>
